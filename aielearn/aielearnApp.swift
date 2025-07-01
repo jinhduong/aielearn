@@ -9,9 +9,20 @@ import SwiftUI
 
 @main
 struct aielearnApp: App {
+    @StateObject private var userProfile = UserProfile()
+    @StateObject private var apiKeyManager = APIKeyManager()
+    @StateObject private var quizManager = QuizManager()
+    @StateObject private var mistakeManager = MistakeManager()
+    @StateObject private var articleManager = ArticleManager()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppNavigationView()
+                .environmentObject(userProfile)
+                .environmentObject(apiKeyManager)
+                .environmentObject(quizManager)
+                .environmentObject(mistakeManager)
+                .environmentObject(articleManager)
         }
     }
 }
